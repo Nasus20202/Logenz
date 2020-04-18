@@ -5,6 +5,13 @@ const logenz = new Discord.Client();
 
 logenz.on('ready', () => {
     console.log(`Just logged into Discord as ${logenz.user.tag}!`);
+    bot.user.setStatus('available')
+    bot.user.setPresence({
+        game: {
+            name: 'Liga Legend',
+            type: "W grze"
+        }
+    });
 });
 
 logenz.on('guildMemberAdd', member =>{
