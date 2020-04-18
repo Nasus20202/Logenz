@@ -5,13 +5,8 @@ const logenz = new Discord.Client();
 
 logenz.on('ready', () => {
     console.log(`Just logged into Discord as ${logenz.user.tag}!`);
-    bot.user.setStatus('available')
-    bot.user.setPresence({
-        game: {
-            name: 'Liga Legend',
-            type: "W grze"
-        }
-    });
+    logenz.user.setPresence({ activity: { name: 'Liga Legend' }, status: 'dnd' });
+    //setInterval(update(), 5000);
 });
 
 logenz.on('guildMemberAdd', member =>{
@@ -27,5 +22,15 @@ logenz.on('guildMemberRemove', member =>{
     console.log(`Goodbye, ${member}`);
     channel.send(`${member}, i tak nikt cię tu nie chciał, **frajerze**!`);
 });
+
+/*function update(){
+    let user = logenz.users.get('name', 'Logenz');
+    let id = user.id;
+    console.log(id);
+    if(!logenzUser) return;
+    console.log(logenzUser.displayAvatarURL());
+}*/
+
+
 
 logenz.login(process.env.TOKEN);
