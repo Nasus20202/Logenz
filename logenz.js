@@ -8,14 +8,14 @@ logenz.on('ready', () => {
 });
 
 logenz.on('guildMemberAdd', member =>{
-    const channel = member.guild.channels.cache.find(ch => ch.name === /*'ogólny'*/ 'test-site');
+    const channel = member.guild.systemChannel;
     if(!channel) return;
     console.log(`Hello, ${member}`);
     channel.send(`Welcome to the server, ${member}`);
 });
 
 logenz.on('guildMemberRemove', member =>{
-    const channel = member.guild.channels.cache.find(ch => ch.name === /*'ogólny'*/ 'test-site');
+    const channel = member.guild.systemChannel;
     if(!channel) return;
     console.log(`Goodbye, ${member}`);
     channel.send(`Goodbye, ${member}`);
