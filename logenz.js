@@ -1,11 +1,12 @@
+'use strict';
 require('dotenv').config();
 
-const Discord = require('discord.js');
-const logenz = new Discord.Client();
+const {Client, Intents} = require('discord.js');
+const logenz = new Client({ intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_PRESENCES", "GUILD_MESSAGES"]});
 
 logenz.on('ready', () => {
     console.log(`Just logged into Discord as ${logenz.user.tag}!`);
-    logenz.user.setPresence({ activity: { name: 'Liga Legend' }, status: 'dnd' });
+    logenz.user.setPresence({ activities: [{ name: "Liga Legend", type : "PLAYING" }], status: "dnd" });
 });
 
 logenz.on('guildMemberAdd', member =>{
