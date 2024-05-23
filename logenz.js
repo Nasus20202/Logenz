@@ -21,15 +21,15 @@ logenz.on("ready", () => {
 logenz.on("guildMemberAdd", (member) => {
   const channel = member.guild.systemChannel;
   if (!channel) return;
-  console.log(`Hello, ${member}`);
+  console.log(`Hello, ${member.displayName}`);
   channel.send(`**Siema**, ${member}!`);
 });
 
 logenz.on("guildMemberRemove", (member) => {
   const channel = member.guild.systemChannel;
   if (!channel) return;
-  console.log(`Goodbye, ${member}`);
-  channel.send(`${member}, i tak nikt cię tu nie chciał, **frajerze**!`);
+  console.log(`Goodbye, ${member.displayName}`);
+  channel.send(`**${member.displayName}**, i tak nikt cię tu nie chciał, **frajerze**!`);
 });
 
 logenz.login(process.env.TOKEN);
