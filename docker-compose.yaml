@@ -1,0 +1,7 @@
+services:
+  logenz:
+    build: .
+    container_name: logenz
+    restart: always
+    environment:
+      - TOKEN=${TOKEN}
