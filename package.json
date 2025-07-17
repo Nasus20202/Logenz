@@ -20,6 +20,6 @@
   "homepage": "https://github.com/Nasus20202/Logenz#readme",
   "dependencies": {
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.4"
+    "dotenv": "^17.0.0"
   }
 }
