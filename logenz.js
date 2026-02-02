@@ -1,7 +1,7 @@
 "use strict";
-require("dotenv").config();
 
-const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
+import { Client, GatewayIntentBits, ActivityType, Events } from "discord.js";
+
 const logenz = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -11,25 +11,32 @@ const logenz = new Client({
   ],
 });
 
-logenz.on("ready", () => {
+logenz.on(Events.ClientReady, () => {
   console.log(`Just logged into Discord as ${logenz.user.tag}!`);
   logenz.user.setPresence({
-    activities: [{ name: "W grze \u{1D5DF}\u{1D5F6}\u{1D5F4}\u{1D5EE} \u{1D5DF}\u{1D5F2}\u{1D5F4}\u{1D5F2}\u{1D5FB}\u{1D5F1}", type: ActivityType.Custom }]
+    activities: [
+      {
+        name: "W grze \u{1D5DF}\u{1D5F6}\u{1D5F4}\u{1D5EE} \u{1D5DF}\u{1D5F2}\u{1D5F4}\u{1D5F2}\u{1D5FB}\u{1D5F1}",
+        type: ActivityType.Custom,
+      },
+    ],
   });
 });
 
-logenz.on("guildMemberAdd", (member) => {
+logenz.on(Events.GuildMemberAdd, (member) => {
   const channel = member.guild.systemChannel;
   if (!channel) return;
   console.log(`Hello, ${member.displayName}`);
   channel.send(`**Siema**, ${member}!`);
 });
 
-logenz.on("guildMemberRemove", (member) => {
+logenz.on(Events.GuildMemberRemove, (member) => {
   const channel = member.guild.systemChannel;
   if (!channel) return;
   console.log(`Goodbye, ${member.displayName}`);
-  channel.send(`**${member.displayName}**, i tak nikt cię tu nie chciał, **frajerze**!`);
+  channel.send(
+    `**${member.displayName}**, i tak nikt cię tu nie chciał, **frajerze**!`,
+  );
 });
 
 logenz.login(process.env.TOKEN);
